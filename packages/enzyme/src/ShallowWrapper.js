@@ -295,7 +295,7 @@ class ShallowWrapper {
       privateSet(this, ROOT, root);
       privateSet(this, UNRENDERED, null);
       privateSet(this, RENDERER, root[RENDERER]);
-      privateSetNodes(this, nodes);
+      privateSetNodes(this, this[RENDERER].getNode());
       privateSet(this, OPTIONS, root[OPTIONS]);
       privateSet(this, ROOT_NODES, root[NODES]);
     }

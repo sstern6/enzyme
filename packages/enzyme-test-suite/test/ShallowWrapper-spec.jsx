@@ -56,6 +56,23 @@ const getElementPropSelector = prop => x => x.props[prop];
 const getWrapperPropSelector = prop => x => x.prop(prop);
 
 describe('shallow', () => {
+  describe('Parent test', () => {
+    it('should return a parent that can find things', () => {
+      class MockComponent extends React.Component {
+        render() {
+          return (
+            <div className="container">
+              <div className="foo">Some foo</div>
+              <div className="bar">Some bar</div>
+            </div>
+          );
+        }
+      }
+      const wrapper = shallow(<MockComponent />);
+      expect(wrapper.find('.foo').parents().find('.bar').exists()).to.equal(true);
+      expect(wrapper.find('.foo').parent().find('.bar').exists()).to.equal(true);
+    });
+  });
   describe('top level wrapper', () => {
     it('does what i expect', () => {
       class Box extends React.Component {
